@@ -1,0 +1,24 @@
+python3 -m venv env
+env\Scripts\activate
+python -m pip install django
+python -m pip freeze > requirements.txt
+	python -m pip install -r requirements.txt
+
+django-admin startproject invoices
+cd invoices
+python manage.py startapp invoice
+add 'invoice' in INSTALLED_APPS in settings.py file
+define models - https://docs.djangoproject.com/en/5.0/topics/db/models/
+python -m pip install djangorestframework
+python -m pip freeze > requirements.txt
+add 'rest_framework' in INSTALLED_APPS in settings.py file
+create serializers.py file - https://www.django-rest-framework.org/api-guide/serializers/
+create views.py and urls.py file - https://www.django-rest-framework.org/api-guide/viewsets/
+Add these urls.py in invoices/urls.py 
+	path('api/', include('invoice.urls'))
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+
+http://127.0.0.1:8000/api/invoices/
+http://127.0.0.1:8000/api/invoicedetails/
